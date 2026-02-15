@@ -25,4 +25,19 @@ void print_triangle(int leftCol, int size)
     putchar('\n');
   }
 }
+// Prints an arrow.
+void print_arrow(void)
+{
+  static const unsigned char arrow[5] = {0x10, 0x18, 0x7F, 0x18, 0x10 };
+   for (char col = 0; col < 5; col++) {
+    for (char row = 0; row < 7; row++) {
+      unsigned short rowBits = arrow[col];
+      unsigned short colMask = 1 << (6 - row);
+      putchar((rowBits & colMask) ? '*' : ' ');
+    }
+    putchar('\n');
+  }
+  putchar('\n');
+}
+
 
