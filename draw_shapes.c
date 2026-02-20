@@ -28,16 +28,18 @@ void print_triangle(int leftCol, int size)
 // Prints an arrow.
 void print_arrow(void)
 {
-  static const unsigned char arrow[5] = {0x10, 0x18, 0x7F, 0x18, 0x10 };
-   for (char col = 0; col < 5; col++) {
-    for (char row = 0; row < 7; row++) {
-      unsigned short rowBits = arrow[col];
-      unsigned short colMask = 1 << (6 - row);
-      putchar((rowBits & colMask) ? '*' : ' ');
+  static const unsigned char arrow_r[7] = {0x08,0x0C,0x7E,0x7F,0x7E,0x0C,0x08,
+  };
+
+  for (int row = 0; row < 7; row++) {
+    unsigned char bits = arrow_r[row];
+    for (int col = 0; col < 7; col++) {
+      unsigned char mask = 1 << (6 - col);
+      putchar((bits & mask) ? '*' : ' ');
+  
     }
     putchar('\n');
-  }
-  putchar('\n');
+  }  putchar('\n');
 }
 
 
